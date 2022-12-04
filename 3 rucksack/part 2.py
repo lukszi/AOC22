@@ -25,7 +25,6 @@ with open("rucksacks.txt", "r") as file:
 
         # Process group
         duplicate = get_duplicate(backpacks)
-        print(chr(duplicate))
         backpacks = []
 
         # Fetch priority
