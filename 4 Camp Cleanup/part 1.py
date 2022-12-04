@@ -1,7 +1,10 @@
-def parse_line(line):
-    pair_str = line.split(",")
+from typing import List
 
-    ranges = []
+
+def parse_line(line: str) -> List[List[int]]:
+    pair_str: List[str] = line.split(",")
+
+    ranges: List[List[int]] = []
     for area_range_str in pair_str:
         area_range = area_range_str.split("-")
         ranges.append([int(x) for x in area_range])
@@ -9,7 +12,7 @@ def parse_line(line):
     return ranges
 
 
-def ranges_contained(pair_ranges):
+def ranges_contained(pair_ranges: List[List[int]]) -> bool:
     if pair_ranges[0][0] <= pair_ranges[1][0] and pair_ranges[0][1] >= pair_ranges[1][1]:
         return True
     if pair_ranges[1][0] <= pair_ranges[0][0] and pair_ranges[1][1] >= pair_ranges[0][1]:
@@ -17,10 +20,15 @@ def ranges_contained(pair_ranges):
     return False
 
 
-with open("pairs.txt", "r") as file:
-    counter = 0
-    for line in file:
-        pair_ranges = parse_line(line)
-        counter += 1 if ranges_contained(pair_ranges) else 0
+def main():
+    with open("pairs.txt", "r") as file:
+        counter: int = 0
+        for line in file:
+            pair_ranges: List[List[int]] = parse_line(line)
+            counter += 1 if ranges_contained(pair_ranges) else 0
 
-print(counter)
+    print(counter)
+
+
+if __name__ == '__main__':
+    main()
