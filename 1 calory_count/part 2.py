@@ -19,4 +19,4 @@ with open("calories.txt", "r") as file:
         else:
             current_count += (int(line))
 
-print(top_3)
+print(sum(top_3))
