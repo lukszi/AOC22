@@ -7,14 +7,10 @@ def process_starting_state(starting_state: List[str])-> List[List[str]]:
     stacks: List[List[str]] = [[] for _ in range(n_stacks)]
 
     for line in starting_state:
-        i_l = 1
-        i_s = 0
-        while i_l < len(line):
-            char = line[i_l]
+        for i in range((len(line) + 1) // 4):
+            char = line[i * 4 + 1]
             if char != " ":
-                stacks[i_s].append(char)
-            i_l += 4
-            i_s += 1
+                stacks[i].append(char)
 
     [stack.reverse() for stack in stacks]
     return stacks
